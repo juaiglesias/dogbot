@@ -1,5 +1,4 @@
 import datetime 
-import env
 import os
 import requests
 import tweepy 
@@ -13,15 +12,15 @@ def main():
 
 def twitter_access(): 
     print('Authenticating at Twitter API...')
-    auth = tweepy.OAuthHandler(env.TWITTER_API_KEY, env.TWITTER_API_SECRET) 
-    auth.set_access_token(env.TWITTER_ACCESS_TOKEN, env.TWITTER_ACCESS_TOKEN_SECRET)
+    auth = tweepy.OAuthHandler(os.environ['TWITTER_API_KEY'], os.environ['TWITTER_API_SECRET']) 
+    auth.set_access_token(os.environ['TWITTER_ACCESS_TOKEN'], os.environ['TWITTER_ACCESS_TOKEN_SECRET'])
     api_twitter = tweepy.API(auth)
     print('Successful authentication...')
     return api_twitter
 
 def generate_tweet():
     print('Obtaining information for DOG API...')
-    response = requests.get(env.URL_GET_DOG, headers={"x-api-key": env.DOG_API_KEY}).json()
+    response = requests.get(os.environ['URL_GET_DOG'], headers={"x-api-key": os.environ['DOG_API_KEY']}).json()
     tweet_message = 'Hello world'
     return tweet_message, response[0]['url']
 
