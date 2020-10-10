@@ -2,7 +2,7 @@ import tweepy
 import os
 
 import twitter
-import testenv
+#import testenv
 
 def main():
     #testenv.set_variables()

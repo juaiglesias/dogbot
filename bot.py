@@ -5,7 +5,7 @@ import requests
 
 # Our libraries
 import twitter
-import testenv
+#import testenv
 
 filename = 'temp'
 
