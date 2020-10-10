@@ -1,22 +1,19 @@
+# Python libraries
 import datetime 
 import os
 import requests
-import tweepy 
+
+# Our libraries
+import twitter
+import testenv
 
 filename = 'temp'
 
 def main():
+    #testenv.set_variables()
     tweet_message, url_image = generate_tweet()
-    twitter_api_connection = twitter_access()
+    twitter_api_connection = twitter.twitter_access()
     publish_tweet_api(tweet_message, url_image, twitter_api_connection)
-
-def twitter_access(): 
-    print('Authenticating at Twitter API...')
-    auth = tweepy.OAuthHandler(os.environ['TWITTER_API_KEY'], os.environ['TWITTER_API_SECRET']) 
-    auth.set_access_token(os.environ['TWITTER_ACCESS_TOKEN'], os.environ['TWITTER_ACCESS_TOKEN_SECRET'])
-    api_twitter = tweepy.API(auth)
-    print('Successful authentication...')
-    return api_twitter
 
 def generate_tweet():
     print('Obtaining information for DOG API...')
